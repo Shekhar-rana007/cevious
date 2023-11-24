@@ -1,0 +1,8 @@
+.orgcont {
+    background-image: url("../../../public/assets/images/otpback.png");
+    background-size: cover;
+    width: 100vw;
+    height: 75vh;
+    font-family: "Open Sans", sans-serif;
+    border: 1px solid red;
+}
