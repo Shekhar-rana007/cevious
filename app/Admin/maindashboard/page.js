@@ -1,19 +1,24 @@
+"use client";
 import React from "react";
 import Image from "next/image";
 import AdminTop from "@/app/components/AdminTop";
-
 import "./asidebar.css";
 import AdminNewsidebar from "@/app/components/AdminNewsidebar";
 // import MyChart from "@/app/components/MyChart";
 import { FaRupeeSign } from "react-icons/fa";
 import { graph1, graph2, graph3, graph4 } from "@/public/assets";
+import { BsThreeDots } from "react-icons/bs";
+import SecMainGraph from "@/app/components/SecMainGraph";
+import CircleChart from "@/app/components/CircleChart";
+import { FaLongArrowAltUp } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa6";
 const page = () => {
   const g1data = [
     { text: "sales", percent: "2.4", rs: "12,5622.26", img: graph1 },
     { text: "credit Notes", percent: "2.4", rs: "12,5622.26", img: graph2 },
     { text: "receivable", percent: "2.4", rs: "12,5622.26", img: graph3 },
-    // { text: "collection", percent: "2.4", rs: "12,5622.26", img: graph4 },
-    // { text: "overdue", percent: "2.4", rs: "12,5622.26", img: graph3 },
+    { text: "collection", percent: "2.4", rs: "12,5622.26", img: graph4 },
+    { text: "overdue", percent: "2.4", rs: "12,5622.26", img: graph3 },
   ];
   return (
     <>
@@ -43,8 +48,9 @@ const page = () => {
               Company Overview
             </span>
             <main>
-              <div className="px-6">
-                <div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
+              {/* ----------------------first------------------ */}
+              <div className="px-6 ">
+                <div className="w-full bg-white shadow-md text-slate-500 rounded-xl grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-2">
                   <div className="p-4 sm:p-4 xl:p-6  2xl:col-span-2">
                     <div className="flex w-full lg:flex-nowrap flex-wrap justify-start items-center gap-4">
                       {g1data.map((val, id) => (
@@ -82,91 +88,185 @@ const page = () => {
                   </div>
                 </div>
               </div>
-              <div className="mt-4 w-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-                <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
-                        2,340
+
+              {/* -------------------------------sec------------------------------ */}
+              <div className=" secMain flex justify-between p-5 flex-wrap gap-3">
+                <SecMainGraph />
+              </div>
+              {/* ------------------------third------------------------------ */}
+              <div className=" thirdMain flex justify-between p-5 flex-wrap gap-3">
+                {/* ------------------------------firstpart--------------- */}
+                <div className="graphcard3 p-2 shadow-2xl bg-white rounded-lg ">
+                  <div className="flex capitalize justify-between">
+                    <div>
+                      <span className=" text-slate-500  font-semibold">
+                        receivable amount
                       </span>
-                      <h3 className="text-base font-normal text-gray-500">
-                        New products this week
-                      </h3>
                     </div>
-                    <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                      14.6%
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
+                    <div className="capitalize flex items-center text-slate-500 font-semibold">
+                      <span>
+                        <BsThreeDots />
+                      </span>
+                    </div>
+                  </div>
+                  <div className="  flex justify-between  items-center ">
+                    <div className="flex flex-col gap-20 py-3">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs capitalize text-slate-500 font-semibold">
+                          receivable amount
+                        </span>
+                        <span className="text-xl text-slate-500 font-semibold">
+                          $20,456
+                        </span>
+                      </div>
+                      <div className=" flex flex-col gap-1">
+                        <span className="text-xs flex justify-between items-center capitalize text-slate-500 font-semibold">
+                          receivable by sales
+                          <span className="flex gap-1 items-center">
+                            <FaLongArrowAltUp /> 80%
+                          </span>
+                        </span>
+                        <span className="text-xs flex gap-1 items-center capitalize text-slate-500 font-semibold">
+                          collection by receivable
+                          <FaLongArrowAltUp /> 25%
+                        </span>
+                        <span className="text-xs flex justify-between items-center capitalize text-slate-500 font-semibold">
+                          receivable by sales
+                          <span className="flex gap-1 items-center">
+                            <FaArrowDown />
+                            20%
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                    <div className=" lg:w-[220px] text-center">
+                      <CircleChart />
                     </div>
                   </div>
                 </div>
-                <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
-                        5,355
+
+                {/* --------------2ndpart-------------- */}
+                <div className="graphcard3 p-2 shadow-2xl bg-white rounded-lg ">
+                  <div className="flex capitalize justify-between">
+                    <div>
+                      <span className=" text-slate-500 font-semibold">
+                        outstanding
                       </span>
-                      <h3 className="text-base font-normal text-gray-500">
-                        Visitors this week
-                      </h3>
                     </div>
-                    <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
-                      32.9%
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M5.293 7.707a1 1 0 010-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L6.707 7.707a1 1 0 01-1.414 0z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
+                    <div className="capitalize flex items-center text-slate-500 font-semibold">
+                      <span>
+                        <BsThreeDots />
+                      </span>
+                    </div>
+                  </div>
+                  <div className="  flex justify-between  items-center ">
+                    <div className="flex flex-col gap-20 py-3">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs capitalize text-slate-500 font-semibold">
+                          receivable amount
+                        </span>
+                        <span className="text-xl text-slate-500 font-semibold">
+                          $20,456
+                        </span>
+                      </div>
+                      <div className=" flex flex-col gap-1">
+                        <span className="text-xs flex justify-between items-center capitalize text-slate-500 font-semibold">
+                          receivable by sales
+                          <span className="flex gap-1 items-center">
+                            <FaLongArrowAltUp /> 80%
+                          </span>
+                        </span>
+                        <span className="text-xs flex gap-1 items-center capitalize text-slate-500 font-semibold">
+                          collection by receivable
+                          <FaLongArrowAltUp /> 25%
+                        </span>
+                        <span className="text-xs flex justify-between items-center capitalize text-slate-500 font-semibold">
+                          receivable by sales
+                          <span className="flex gap-1 items-center">
+                            <FaArrowDown />
+                            20%
+                          </span>
+                        </span>
+                      </div>
+                    </div>
+                    <div className=" lg:w-[220px] text-center">
+                      <CircleChart />
                     </div>
                   </div>
                 </div>
-                <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
-                  <div className="flex items-center">
-                    <div className="flex-shrink-0">
-                      <span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
-                        385
-                      </span>
-                      <h3 className="text-base font-normal text-gray-500">
-                        User signups this week
-                      </h3>
+              </div>
+              <div className=" forthMain flex p-5 flex-wrap gap-3">
+                <div className="graphcard3 p-3 shadow-2xl bg-white rounded-lg">
+                  <div className="ms-auto  flex justify-between gap-5 ">
+                    <div className="flex flex-col gap-16">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-xs capitalize text-slate-500 font-semibold">
+                          Avg.Sale per day
+                        </span>
+                        <span className="text-sm text-slate-500 font-semibold">
+                          $9,690
+                        </span>
+                      </div>
+                      <div className=" flex flex-col gap-1">
+                        <Image
+                          src={graph1}
+                          width={300}
+                          height={200}
+                          alt="graph"
+                        />
+                      </div>
                     </div>
-                    <div className="ml-5 w-0 flex items-center justify-end flex-1 text-red-500 text-base font-bold">
-                      -2.7%
-                      <svg
-                        className="w-5 h-5"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          fill-rule="evenodd"
-                          d="M14.707 12.293a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 111.414-1.414L9 14.586V3a1 1 0 012 0v11.586l2.293-2.293a1 1 0 011.414 0z"
-                          clip-rule="evenodd"
-                        ></path>
-                      </svg>
+                  </div>
+                </div>
+                <div className="graphcard4 p-3 w-full lg:w-auto shadow-2xl bg-white rounded-lg">
+                  <div className="flex justify-between gap-5 ">
+                    <div className="flex flex-col gap-16">
+                      <div className="flex justify-between gap-1 text-slate-500 ">
+                        <span className="text-xs capitalize font-semibold">
+                          Avg.Purchase per day
+                        </span>
+                        <BsThreeDots />
+                      </div>
+                      <div>
+                        <CircleChart />
+                        <div className=" flex justify-between items-center capitalize">
+                          <form>
+                            <input
+                              type="radio"
+                              id="purchase"
+                              name="chartType"
+                              value="purchase"
+                            />
+                            <label
+                              htmlFor="purchase"
+                              className="text-xs capitalize ml-1 text-slate-500 font-semibold"
+                            >
+                              Purchase
+                            </label>
+                          </form>
+                          <form>
+                            <input
+                              type="radio"
+                              id="debit"
+                              name="chartType"
+                              value="debit"
+                            />
+                            <label
+                              htmlFor="debit"
+                              className="text-xs capitalize ml-1 text-slate-500 font-semibold"
+                            >
+                              Debit
+                            </label>
+                          </form>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </main>
           </div>
+          {/* --------------------------------- */}
         </div>
       </div>
     </>
